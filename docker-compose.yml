@@ -1,0 +1,11 @@
+services:
+  mysql:
+    image: mysql:8.1.0
+    container_name: star-platinum
+    environment:
+      MYSQL_DATABASE: stands
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3304:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
