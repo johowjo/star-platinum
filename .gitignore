@@ -2,3 +2,4 @@
 /data
 .env
 *.lock
+/sea_orm_pro_assets/admin/
