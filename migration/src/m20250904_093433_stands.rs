@@ -3,7 +3,7 @@ use sea_orm_migration::{prelude::*, schema::*};
 #[derive(DeriveMigrationName)]
 pub struct Migration;
 
-static STAND_PARAMETER_VALUE: &str = "ENUM('A', 'B', 'C', 'D', 'E')";
+static STAND_PARAMETER_VALUE: &str = "ENUM('A', 'B', 'C', 'D', 'E', 'NULL')";
 
 #[async_trait::async_trait]
 impl MigrationTrait for Migration {

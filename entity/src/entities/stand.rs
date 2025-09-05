@@ -7,6 +7,7 @@ use super::sea_orm_active_enums::Precision;
 use super::sea_orm_active_enums::Range;
 use super::sea_orm_active_enums::Speed;
 use sea_orm::entity::prelude::*;
+use seaography::async_graphql::SimpleObject;
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq)]
 #[sea_orm(table_name = "stand")]
