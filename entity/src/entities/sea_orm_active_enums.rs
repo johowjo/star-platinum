@@ -3,8 +3,9 @@
 use sea_orm::{entity::prelude::*};
 use serde::Serialize;
 use strum_macros::Display;
+use async_graphql::Enum;
 
-#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Serialize, Display)]
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Serialize, Display, Enum)]
 #[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "destructive_power")]
 pub enum DestructivePower {
     #[sea_orm(string_value = "A")]
@@ -20,7 +21,8 @@ pub enum DestructivePower {
     #[sea_orm(string_value = "NULL")]
     Null,
 }
-#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display)]
+
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display, Enum)]
 #[sea_orm(
     rs_type = "String",
     db_type = "Enum",
@@ -40,7 +42,7 @@ pub enum DevelopmentPotential {
     #[sea_orm(string_value = "NULL")]
     Null,
 }
-#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display)]
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display, Enum)]
 #[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "persistance")]
 pub enum Persistance {
     #[sea_orm(string_value = "A")]
@@ -56,7 +58,7 @@ pub enum Persistance {
     #[sea_orm(string_value = "NULL")]
     Null,
 }
-#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display)]
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display, Enum)]
 #[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "precision")]
 pub enum Precision {
     #[sea_orm(string_value = "A")]
@@ -72,7 +74,7 @@ pub enum Precision {
     #[sea_orm(string_value = "NULL")]
     Null,
 }
-#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display)]
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display, Enum)]
 #[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "range")]
 pub enum Range {
     #[sea_orm(string_value = "A")]
@@ -88,7 +90,8 @@ pub enum Range {
     #[sea_orm(string_value = "NULL")]
     Null,
 }
-#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display)]
+
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum, Copy, Display, Enum)]
 #[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "speed")]
 pub enum Speed {
     #[sea_orm(string_value = "A")]

@@ -2,10 +2,9 @@ mod db;
 mod routes;
 mod graphql;
 use db::Db;
-use sea_orm::{DatabaseConnection, SqlxMySqlConnector};
 use std::env::var;
-use routes::build_routes;
 use graphql::build_schema;
+use routes::build_routes;
 
 #[tokio::main]
 async fn main() {
@@ -14,11 +13,7 @@ async fn main() {
     let port: String = var("PORT").expect("PORT is not set");
     let db = Db::init().await;
 
-    let pool = db.clone().mysql_pool;
-    let connection: DatabaseConnection = SqlxMySqlConnector::from_sqlx_mysql_pool(pool);
-    const DEPTH: Option<usize> = None;
-    const COMPLEXITY: Option<usize> = None;
-    let schema = build_schema(connection, DEPTH, COMPLEXITY).unwrap();
+    let schema = build_schema(db.clone());
 
     let app = build_routes(schema).await;
 
@@ -26,6 +21,7 @@ async fn main() {
         .await
         .unwrap();
 
-    println!("GUI available at http://localhost:{port}/admin");
+    println!("GraphQL available at http://localhost:{port}/api/graphql");
+
     axum::serve(listener, app).await.unwrap();
 }

@@ -1,5 +1,4 @@
-use axum::response;
-use axum::response::IntoResponse;
+use axum::response::{self, IntoResponse};
 #[derive(Default)]
 struct GraphiQLBuilder<'a> {
     version: &'a str,

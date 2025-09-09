@@ -7,9 +7,9 @@ use super::sea_orm_active_enums::Precision;
 use super::sea_orm_active_enums::Range;
 use super::sea_orm_active_enums::Speed;
 use sea_orm::entity::prelude::*;
-use seaography::async_graphql::SimpleObject;
+use async_graphql::SimpleObject;
 
-#[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq)]
+#[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq, SimpleObject)]
 #[sea_orm(table_name = "stand")]
 pub struct Model {
     #[sea_orm(primary_key)]
@@ -23,6 +23,10 @@ pub struct Model {
     pub precision: Option<Precision>,
     pub development_potential: Option<DevelopmentPotential>,
 }
+
+// impl OutputType for Model {
+//
+// }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {}
