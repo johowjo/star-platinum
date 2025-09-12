@@ -1,10 +1,10 @@
 mod db;
-mod routes;
 mod graphql;
+mod routes;
 use db::Db;
-use std::env::var;
 use graphql::build_schema;
 use routes::build_routes;
+use std::env::var;
 
 #[tokio::main]
 async fn main() {

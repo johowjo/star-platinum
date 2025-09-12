@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/doublify/pre-commit-rust
+    rev: v1.0
+    hooks:
+      - id: clippy
+        files: ^src/
+        entry: cargo clippy --manifest-path ./Cargo.toml --fix --allow-staged --allow-dirty
+        args: ["--"]
+      - id: clippy
+        files: ^entity/src/
+        entry: cargo clippy --manifest-path ./entity/Cargo.toml --fix --allow-staged --allow-dirty
+      - id: clippy
+        files: ^migration/src/
+        entry: cargo clippy --manifest-path ./migration/Cargo.toml --fix --allow-staged --allow-dirty
+        args: ["--"]
+      - id: fmt
+        files: ^src/
+        entry: cargo fmt --manifest-path ./Cargo.toml
+        args: ["--"]
+      - id: fmt
+        files: ^entity/src/
+        entry: cargo fmt --manifest-path ./entity/Cargo.toml
+        args: ["--"]
+      - id: fmt
+        files: ^migration/src/
+        entry: cargo fmt --manifest-path ./migration/Cargo.toml
+        args: ["--"]
