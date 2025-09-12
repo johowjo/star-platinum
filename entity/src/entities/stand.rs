@@ -23,7 +23,7 @@ pub struct Model {
     pub development_potential: Option<StandStats>,
 }
 
-fn str_to_optional_stand_stat(s: &str) -> Option<StandStats> {
+pub fn str_to_optional_stand_stat(s: &str) -> Option<StandStats> {
     match s {
         "A" => Some(StandStats::A),
         "B" => Some(StandStats::B),
