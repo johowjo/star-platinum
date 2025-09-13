@@ -1,3 +1,4 @@
+use super::subscription::Subscriptor;
 use crate::Db;
 use async_graphql::{Context, Object, Result};
 use entity::stand::{Model, str_to_optional_stand_stat};
@@ -34,7 +35,7 @@ impl Mutation {
         .execute(&db.mysql_pool)
         .await?;
 
-        Ok(Model {
+        let m: Model = Model {
             id: result.last_insert_id() as i32,
             name,
             owner,
@@ -44,6 +45,10 @@ impl Mutation {
             persistance: str_to_optional_stand_stat(persistance.as_str()),
             precision: str_to_optional_stand_stat(precision.as_str()),
             development_potential: str_to_optional_stand_stat(development_potential.as_str()),
-        })
+        };
+
+        Subscriptor::<Model>::publish(m.clone());
+
+        Ok(m)
     }
 }
